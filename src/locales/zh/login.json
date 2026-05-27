@@ -1,0 +1,20 @@
+{
+  "page": {
+    "subtitle": "登录到您的账户",
+    "field": {
+      "username": "用户名 / 邮箱 / 手机",
+      "password": "密码"
+    },
+    "button": {
+      "login": "登录",
+      "loggingIn": "登录中..."
+    },
+    "noAccount": "还没有账号？",
+    "register": "去注册",
+    "error": {
+      "usernameRequired": "请输入用户名",
+      "passwordRequired": "请输入密码",
+      "loginFailed": "登录失败，请检查用户名和密码"
+    }
+  }
+}

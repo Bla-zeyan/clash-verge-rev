@@ -196,6 +196,26 @@ export interface TranslationResources {
         }
       }
     }
+    login: {
+      page: {
+        button: {
+          loggingIn: string
+          login: string
+        }
+        error: {
+          loginFailed: string
+          passwordRequired: string
+          usernameRequired: string
+        }
+        field: {
+          password: string
+          username: string
+        }
+        noAccount: string
+        register: string
+        subtitle: string
+      }
+    }
     logs: {
       actions: {
         showAscending: string

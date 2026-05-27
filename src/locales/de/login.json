@@ -1,0 +1,21 @@
+{
+  "page": {
+    "subtitle": "Login to your account",
+    "field": {
+      "username": "Username / Email / Phone",
+      "password": "Password"
+    },
+    "button": {
+      "login": "Login",
+      "loggingIn": "Logging in..."
+    },
+    "noAccount": "Don't have an account?",
+    "register": "Register",
+    "error": {
+      "usernameRequired": "Username is required",
+      "passwordRequired": "Password is required",
+      "loginFailed": "Login failed, please check your username and password",
+      "networkError": "Network connection failed, please check your network"
+    }
+  }
+}

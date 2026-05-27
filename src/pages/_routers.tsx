@@ -17,14 +17,17 @@ import RulesSvg from '@/assets/image/itemicon/rules.svg?react'
 import SettingsSvg from '@/assets/image/itemicon/settings.svg?react'
 import UnlockSvg from '@/assets/image/itemicon/unlock.svg?react'
 
+import { Navigate, useLocation } from 'react-router'
 import Layout from './_layout'
 import ConnectionsPage from './connections'
 import HomePage from './home'
+import LoginPage from './login'
 import ProfilesPage from './profiles'
 import ProxiesPage from './proxies'
 import RulesPage from './rules'
 import SettingsPage from './settings'
 import UnlockPage from './unlock'
+import { auth } from '@/services/auth'
 
 export const navItems = [
   {
@@ -77,10 +80,52 @@ export const navItems = [
   },
 ]
 
+const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
+  const location = useLocation()
+  const isLoggedIn = !!auth.getUserId()
+
+  if (!isLoggedIn && location.pathname !== '/login') {
+    return <Navigate to="/login" state={{ from: location }} replace />
+  }
+
+  if (isLoggedIn && location.pathname === '/login') {
+    return <Navigate to="/" replace />
+  }
+
+  return <>{children}</>
+}
+
+const AuthRoute = ({ children }: { children: React.ReactNode }) => {
+  const location = useLocation()
+  const isLoggedIn = !!auth.getUserId()
+
+  if (isLoggedIn && location.pathname === '/login') {
+    return <Navigate to="/" replace />
+  }
+
+  if (!isLoggedIn && location.pathname !== '/login') {
+    return <Navigate to="/login" state={{ from: location }} replace />
+  }
+
+  return <>{children}</>
+}
+
 export const router = createBrowserRouter([
   {
+    path: '/login',
+    Component: () => (
+      <AuthRoute>
+        <LoginPage />
+      </AuthRoute>
+    ),
+  },
+  {
     path: '/',
-    Component: Layout,
+    Component: () => (
+      <ProtectedRoute>
+        <Layout />
+      </ProtectedRoute>
+    ),
     children: navItems.map(
       (item) =>
         ({
