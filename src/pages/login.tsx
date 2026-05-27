@@ -26,12 +26,7 @@ const LoginPage = () => {
     >
       <Container maxWidth="xs">
         <Box sx={{ textAlign: 'center', mb: 4 }}>
-          <Typography
-            variant="h4"
-            component="h1"
-            fontWeight="bold"
-            gutterBottom
-          >
+          <Typography variant="h4" sx={{ fontWeight: 'bold' }} gutterBottom>
             Clash Verge Rev
           </Typography>
           <Typography variant="body2" color="text.secondary">
